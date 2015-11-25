@@ -41,9 +41,6 @@ class CommandLineRProcess extends AbstractRProcess
             throw new RProcessException($errorOutput);
         }
 
-        // Do not terminate on errors
-        fwrite($this->pipes[0], "options(error=expression(NULL))\n");
-
         // Skip the startup message (if any)
         do {
             $out = fread($this->pipes[1], $this->infiniteLength);
